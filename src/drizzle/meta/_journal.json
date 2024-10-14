@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1728829068864,
+      "tag": "0000_salty_firebird",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1728831402661,
+      "tag": "0001_tense_celestials",
+      "breakpoints": true
+    }
+  ]
+}
