@@ -25,6 +25,17 @@
     snakecase-keys "5.4.4"
     tslib "2.4.1"
 
+"@clerk/backend@^1.13.9":
+  version "1.13.9"
+  resolved "https://registry.yarnpkg.com/@clerk/backend/-/backend-1.13.9.tgz#fd768cb73442a3869f55f674c191fd117b9e0e2a"
+  integrity sha512-WW5IyCsaKHld1lNKQ+XSifUJ75CJ2EFJMPcx+R04icexE90EQzktwT5jeHr3brN7YVR9+PJREzlePrt7eIF/uw==
+  dependencies:
+    "@clerk/shared" "2.9.0"
+    "@clerk/types" "4.25.0"
+    cookie "0.7.0"
+    snakecase-keys "5.4.4"
+    tslib "2.4.1"
+
 "@clerk/clerk-react@5.9.4":
   version "5.9.4"
   resolved "https://registry.yarnpkg.com/@clerk/clerk-react/-/clerk-react-5.9.4.tgz#bcba98223f625e6b9accaa002ce4341e1885de24"
@@ -58,10 +69,28 @@
     std-env "^3.7.0"
     swr "^2.2.0"
 
+"@clerk/shared@2.9.0":
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/@clerk/shared/-/shared-2.9.0.tgz#dcf7c02628806da6fdc185dc780c38e2669b1eac"
+  integrity sha512-DAqxJbmQ3QnQXZepG2InLC7Hdq+4T9/+A/kwtMQtAyQcsZoDwZ1TqVJkrqZ55lJIAkR97HEn3/g+g1ySspdEfA==
+  dependencies:
+    "@clerk/types" "4.25.0"
+    glob-to-regexp "0.4.1"
+    js-cookie "3.0.5"
+    std-env "^3.7.0"
+    swr "^2.2.0"
+
 "@clerk/types@4.23.0":
   version "4.23.0"
   resolved "https://registry.yarnpkg.com/@clerk/types/-/types-4.23.0.tgz#d8436eee61458f4a44c73d38365d84396eaa9199"
   integrity sha512-xCAPeKXOt/qAEzhlv35sdNYm9ewoveRMUwVEoGsFIDaeF9N1agCNdzKtCMcHjGZFH4ESnopLmEq2n46aRxPFkA==
+  dependencies:
+    csstype "3.1.1"
+
+"@clerk/types@4.25.0":
+  version "4.25.0"
+  resolved "https://registry.yarnpkg.com/@clerk/types/-/types-4.25.0.tgz#932520c2381b6686ff1cff816f276b51e5472590"
+  integrity sha512-p2IyJ0q5WF1e976L1pS1J6Mb5ducfkUC31DR1EvMjPwJkrlWJdAMCPc+zqRRAePVy/JBVK2gEKbUVtJ6/jrpag==
   dependencies:
     csstype "3.1.1"
 
@@ -471,6 +500,11 @@
   version "8.57.1"
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.57.1.tgz#de633db3ec2ef6a3c89e2f19038063e8a122e2c2"
   integrity sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==
+
+"@hono/clerk-auth@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@hono/clerk-auth/-/clerk-auth-2.0.0.tgz#afeefb8110b6b44b09c631b00bb9594b49873eb0"
+  integrity sha512-ad+U8jDlBPgXBTv8BRnPrSFC/uX8U0ojiCR77I3WWHm5I9L3/bHsZpQ2lgvLTV3YbJyVmAdKJArEAQiPjodGdA==
 
 "@hono/node-server@^1.9.0":
   version "1.13.2"
@@ -1479,6 +1513,11 @@ cookie@0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.5.0.tgz#d1f5d71adec6558c58f389987c366aa47e994f8b"
   integrity sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==
+
+cookie@0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.7.0.tgz#2148f68a77245d5c2c0005d264bc3e08cfa0655d"
+  integrity sha512-qCf+V4dtlNhSRXGAZatc1TasyFO6GjohcOul807YOb5ik3+kQSnb4d7iajeCL8QHaJ4uZEjCgiCJerKXwdRVlQ==
 
 copy-anything@^3.0.2:
   version "3.0.5"
