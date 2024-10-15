@@ -15,6 +15,13 @@
       "when": 1728996716048,
       "tag": "0001_fine_black_crow",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1729007629976,
+      "tag": "0002_outstanding_sabra",
+      "breakpoints": true
     }
   ]
 }
