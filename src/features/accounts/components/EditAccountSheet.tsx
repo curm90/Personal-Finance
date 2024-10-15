@@ -50,7 +50,7 @@ export default function EditAccountSheet() {
         <SheetContent className='space-y-4'>
           <SheetHeader>
             <SheetTitle>Edit Account</SheetTitle>
-            <SheetDescription>Edit and existing account</SheetDescription>
+            <SheetDescription>Edit an existing account</SheetDescription>
           </SheetHeader>
           {isLoading ? (
             <div className='absolute inset-0 flex items-center justify-center'>
