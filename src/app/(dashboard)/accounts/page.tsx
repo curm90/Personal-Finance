@@ -15,6 +15,12 @@ const data: Payment[] = [
     status: 'pending',
     email: 'm@example.com',
   },
+  {
+    id: '728ed52f',
+    amount: 50,
+    status: 'success',
+    email: 'a@example.com',
+  },
 ];
 
 export default function AccountsPage() {
