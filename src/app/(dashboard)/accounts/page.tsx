@@ -4,6 +4,7 @@ import { Loader2, Plus } from 'lucide-react';
 
 import { useNewAccount } from '@/features/accounts/hooks/useNewAccount';
 import useGetAccounts from '@/features/accounts/api/use-get-accounts';
+import useBulkDeleteAccounts from '@/features/accounts/api/use-bulk-delete';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { DataTable } from '@/components/ui/data-table';
@@ -13,7 +14,10 @@ import { columns } from './columns';
 export default function AccountsPage() {
   const { onOpen } = useNewAccount();
   const accountsQuery = useGetAccounts();
+  const deleteAccountsMutation = useBulkDeleteAccounts();
   const accounts = accountsQuery.data || [];
+
+  const isDisabled = accountsQuery.isLoading || deleteAccountsMutation.isPending;
 
   if (accountsQuery.isLoading) {
     return (
@@ -42,7 +46,16 @@ export default function AccountsPage() {
           </Button>
         </CardHeader>
         <CardContent>
-          <DataTable columns={columns} data={accounts} filterKey='email' />
+          <DataTable
+            columns={columns}
+            data={accounts}
+            filterKey='email'
+            disabled={isDisabled}
+            onDelete={(row) => {
+              const ids = row.map((r) => r.original.id);
+              deleteAccountsMutation.mutate({ ids });
+            }}
+          />
         </CardContent>
       </Card>
     </div>

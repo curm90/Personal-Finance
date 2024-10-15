@@ -12,6 +12,7 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
+  Row,
 } from '@tanstack/react-table';
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -22,7 +23,7 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   filterKey: string;
-  onDelete?: (row: TData) => void;
+  onDelete?: (rows: Row<TData>[]) => void;
   disabled?: boolean;
 }
 
@@ -69,7 +70,10 @@ export function DataTable<TData, TValue>({
             className='ml-auto text-xs font-normal'
             variant='outline'
             size='sm'
-            onClick={() => setRowSelection({})}
+            onClick={() => {
+              onDelete?.(table.getFilteredSelectedRowModel().rows);
+              table.resetRowSelection();
+            }}
             disabled={disabled}
           >
             <Trash className='mr-2 size-4' />
