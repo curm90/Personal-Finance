@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1728996631987,
+      "tag": "0000_elite_doctor_spectrum",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1728996716048,
+      "tag": "0001_fine_black_crow",
+      "breakpoints": true
+    }
+  ]
+}
