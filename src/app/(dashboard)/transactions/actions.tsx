@@ -2,8 +2,8 @@
 
 import { Edit, MoreHorizontal, Trash } from 'lucide-react';
 
-import { useOpenAccount } from '@/features/accounts/hooks/useOpenAccount';
-import useDeleteAccount from '@/features/accounts/api/use-delete-account';
+import useDeleteTransaction from '@/features/transactions/api/use-delete-transaction';
+import { useOpenTransaction } from '@/features/transactions/hooks/useOpenTransaction';
 import useConfirm from '@/hooks/useConfirm';
 import { Button } from '@/components/ui/button';
 import {
@@ -15,16 +15,16 @@ import {
 
 export function Actions({ id }: { id: string }) {
   const [ConfirmDialog, confirm] = useConfirm(
-    'Delete account',
+    'Delete transaction',
     'Are you sure? This action cannot be undone.'
   );
-  const deleteAccountMutation = useDeleteAccount(id);
-  const { onOpen } = useOpenAccount();
+  const deleteTransactionMutation = useDeleteTransaction(id);
+  const { onOpen } = useOpenTransaction();
 
   async function handleDelete() {
     const confirmed = await confirm();
     if (confirmed) {
-      deleteAccountMutation.mutate();
+      deleteTransactionMutation.mutate();
     }
   }
 
@@ -38,11 +38,11 @@ export function Actions({ id }: { id: string }) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align='end'>
-          <DropdownMenuItem disabled={deleteAccountMutation.isPending} onClick={() => onOpen(id)}>
+          <DropdownMenuItem disabled={deleteTransactionMutation.isPending} onClick={() => onOpen(id)}>
             <Edit className='mr-2 size-4' />
             Edit
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={handleDelete} disabled={deleteAccountMutation.isPending}>
+          <DropdownMenuItem onClick={handleDelete} disabled={deleteTransactionMutation.isPending}>
             <Trash className='mr-2 size-4' />
             Delete
           </DropdownMenuItem>
