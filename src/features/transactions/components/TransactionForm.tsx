@@ -12,6 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 
 import Select from '@/components/Select';
 import { DatePicker } from '@/components/DatePicker';
+import { AmountInput } from '@/components/AmountInput';
 
 const formSchema = z.object({
   date: z.date(),
@@ -134,6 +135,19 @@ export default function TransactionForm({
           )}
         />
         <FormField
+          name='amount'
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Amount</FormLabel>
+              <FormControl>
+                <AmountInput {...field} disabled={disabled} placeholder='0.00' />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
           name='notes'
           control={form.control}
           render={({ field }) => (
@@ -152,7 +166,7 @@ export default function TransactionForm({
           )}
         />
         <Button className='w-full' disabled={disabled}>
-          {id ? 'Save changes' : 'Create account'}
+          {id ? 'Save changes' : 'Create transaction'}
         </Button>
         {!!id && (
           <Button
