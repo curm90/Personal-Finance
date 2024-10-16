@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { insertTransactionsSchema } from '@/db/schema';
+import { convertAmountToMilliUnits } from '@/lib/utils';
 
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -15,7 +16,7 @@ import { DatePicker } from '@/components/DatePicker';
 import { AmountInput } from '@/components/AmountInput';
 
 const formSchema = z.object({
-  date: z.date(),
+  date: z.coerce.date(),
   accountId: z.string(),
   amount: z.string(),
   payee: z.string(),
@@ -57,8 +58,10 @@ export default function TransactionForm({
   });
 
   function handleSubmit(values: FormValues) {
-    // onSubmit(values);
-    console.log({ values });
+    const amount = parseFloat(values.amount);
+    const amountInMilliUnits = convertAmountToMilliUnits(amount);
+
+    onSubmit({ ...values, amount: amountInMilliUnits });
   }
 
   function handleDelete() {
