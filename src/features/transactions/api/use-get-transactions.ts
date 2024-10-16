@@ -12,7 +12,7 @@ export default function useGetTransactions() {
   return useQuery({
     queryKey: ['transactions', { to, from, accountId }],
     queryFn: async () => {
-      const res = await client.api.accounts.$get({
+      const res = await client.api.transactions.$get({
         query: {
           to,
           from,
