@@ -3,12 +3,14 @@ import { Trash } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
+import { insertTransactionsSchema } from '@/db/schema';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 
-import { insertTransactionsSchema } from '@/db/schema';
 import Select from '@/components/Select';
+import { DatePicker } from '@/components/DatePicker';
 
 const formSchema = z.object({
   date: z.date(),
@@ -65,6 +67,19 @@ export default function TransactionForm({
     <Form {...form}>
       <form className='space-y-4 pt-4' onSubmit={form.handleSubmit(handleSubmit)}>
         <FormField
+          name='date'
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Date</FormLabel>
+              <FormControl>
+                <DatePicker disabled={disabled} value={field.value} onChange={field.onChange} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
           name='accountId'
           control={form.control}
           render={({ field }) => (
@@ -99,6 +114,19 @@ export default function TransactionForm({
                   placeholder='Select a category...'
                   value={field.value}
                 />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          name='payee'
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Payee</FormLabel>
+              <FormControl>
+                <Input placeholder='Add a Payee...' disabled={disabled} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
