@@ -6,14 +6,14 @@ import useCreateAccount from '@/features/accounts/api/use-create-account';
 import useGetCategories from '@/features/categories/api/use-get-categories';
 import useGetAccounts from '@/features/accounts/api/use-get-accounts';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
-import TransactionForm, { type FormValues } from './TransactionForm';
+import TransactionForm, { type ApiFormValues } from './TransactionForm';
 
 export default function NewTransactionSheet() {
   const { isOpen, onClose } = useNewTransaction();
 
   const createTransactionMutation = useCreateTransaction();
 
-  function handleSubmit(values: FormValues) {
+  function handleSubmit(values: ApiFormValues) {
     createTransactionMutation.mutate(values, {
       onSuccess: () => {
         onClose();
@@ -34,7 +34,7 @@ export default function NewTransactionSheet() {
     return accountMutation.mutate({ name });
   }
 
-  const categoriyOptions = (categoriesQuery.data ?? []).map((category) => ({
+  const categoryOptions = (categoriesQuery.data ?? []).map((category) => ({
     label: category.name,
     value: category.id,
   }));
@@ -63,10 +63,10 @@ export default function NewTransactionSheet() {
           <TransactionForm
             onSubmit={handleSubmit}
             disabled={isPending}
-            categoryOptions={categoriyOptions}
+            categoryOptions={categoryOptions}
             accountOptions={accountOptions}
-            onCreateAccount={handleCreateAccount}
-            onCreateCategory={handleCreateCategory}
+            handleCreateAccount={handleCreateAccount}
+            handleCreateCategory={handleCreateCategory}
           />
         )}
       </SheetContent>
