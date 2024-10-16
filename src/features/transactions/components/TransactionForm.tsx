@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { insertTransactionsSchema } from '@/db/schema';
 
 import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 
@@ -126,7 +127,25 @@ export default function TransactionForm({
             <FormItem>
               <FormLabel>Payee</FormLabel>
               <FormControl>
-                <Input placeholder='Add a Payee...' disabled={disabled} {...field} />
+                <Input {...field} placeholder='Add a payee...' disabled={disabled} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          name='notes'
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Add a note</FormLabel>
+              <FormControl>
+                <Textarea
+                  {...field}
+                  placeholder='Optional notes...'
+                  value={field.value ?? ''}
+                  disabled={disabled}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
